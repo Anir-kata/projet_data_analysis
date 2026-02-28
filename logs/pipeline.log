@@ -1,0 +1,75 @@
+2026-02-03 14:26:24,364 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:26:47,195 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:29:19,597 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:29:19,631 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:30:33,748 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:30:33,783 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:30:33,783 - src.preprocessing.clean_data - INFO - Starting basic cleaning
+2026-02-03 14:30:33,784 - src.preprocessing.clean_data - WARNING - Missing columns: ['annee', 'collectivite', 'secteur', 'type_energie', 'conso_energie', 'depense_energie', 'emission_co2']
+2026-02-03 14:31:27,570 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:31:27,604 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:40:49,249 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:40:49,283 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:43:49,387 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:43:49,422 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:43:49,423 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 14:45:40,078 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:45:40,113 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:45:40,114 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 14:45:40,407 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-02-03 14:47:06,519 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:47:06,555 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:47:06,555 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 14:47:06,866 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-02-03 14:47:06,869 - src.analysis.descriptive_stats - INFO - Computing yearly aggregates
+2026-02-03 14:49:13,086 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:49:13,121 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:49:13,121 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 14:49:13,411 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-02-03 14:49:13,413 - src.analysis.descriptive_stats - INFO - Computing yearly aggregates
+2026-02-03 14:49:19,233 - src.modeling.simple_trend - INFO - Fitting linear trend for conso_energie
+2026-02-03 14:49:19,235 - src.modeling.simple_trend - INFO - Fitted model: y = 0.00 * year + 2012859657.52
+2026-02-03 14:51:44,458 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 14:51:44,493 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 14:51:44,493 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 14:51:44,784 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-02-03 14:51:44,786 - src.analysis.descriptive_stats - INFO - Computing yearly aggregates
+2026-02-03 14:51:45,769 - src.modeling.simple_trend - INFO - Fitting linear trend for conso_energie
+2026-02-03 14:51:45,771 - src.modeling.simple_trend - INFO - Fitted model: y = 0.00 * year + 2012859657.52
+2026-02-03 14:51:45,789 - src.monitoring.data_quality - INFO - Generating data quality report
+2026-02-03 15:09:39,413 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:09:39,448 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:09:39,449 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:11:13,410 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:11:13,444 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:11:13,444 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:12:05,981 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:12:06,017 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:12:06,017 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:12:09,832 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:12:09,874 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:12:09,874 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:12:48,227 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:12:48,262 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:12:48,262 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:13:01,345 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:13:01,382 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:13:01,382 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:13:12,296 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:13:12,331 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:13:12,331 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:13:15,772 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:13:15,806 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:13:15,807 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:16:48,520 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:16:48,555 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:16:48,555 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:17:20,960 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:17:20,995 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:17:20,995 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:17:24,690 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:17:24,725 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:17:24,725 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-02-03 15:19:16,059 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
+2026-02-03 15:19:16,093 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-02-03 15:19:16,094 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
