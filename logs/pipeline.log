@@ -106,3 +106,15 @@
 2026-03-01 18:46:12,534 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
 2026-03-01 18:46:12,589 - src.ingestion.load_data - INFO - Loaded 3860 rows
 2026-03-01 18:46:12,590 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:49:46,418 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:49:46,473 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:49:46,474 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:49:50,964 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:49:51,025 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:49:51,025 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:49:53,096 - src.modeling.anomaly - INFO - Détection d'anomalies (IsolationForest)
+2026-03-01 18:49:53,163 - src.modeling.forecasting - INFO - Fitting ARIMA(1, 1, 1) model on series of length 1
+2026-03-01 18:49:53,177 - src.modeling.clustering - INFO - Clustering collectivités en 3 groupes
+2026-03-01 18:49:53,190 - src.monitoring.data_quality - INFO - Generating data quality report
+2026-03-01 18:49:53,198 - src.modeling.forecasting - INFO - ARIMA fit completed
+2026-03-01 18:49:53,208 - src.modeling.forecasting - INFO - Forecasting 3 periods ahead
