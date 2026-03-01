@@ -103,3 +103,6 @@
 2026-03-01 18:45:25,477 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
 2026-03-01 18:45:25,536 - src.ingestion.load_data - INFO - Loaded 3860 rows
 2026-03-01 18:45:25,536 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:46:12,534 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:46:12,589 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:46:12,590 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
