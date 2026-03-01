@@ -73,3 +73,33 @@
 2026-02-03 15:19:16,059 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\energy-data-project\data\raw\EPC_2_Energie.csv
 2026-02-03 15:19:16,093 - src.ingestion.load_data - INFO - Loaded 3860 rows
 2026-02-03 15:19:16,094 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:42:55,513 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:42:55,570 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:42:55,571 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:42:56,075 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-03-01 18:42:56,077 - src.analysis.descriptive_stats - INFO - Computing yearly aggregates
+2026-03-01 18:43:05,484 - src.modeling.simple_trend - INFO - Fitting linear trend for conso_energie
+2026-03-01 18:43:05,486 - src.modeling.simple_trend - INFO - Fitted model: y = 0.00 * year + 2012859657.52
+2026-03-01 18:43:05,490 - src.modeling.forecasting - INFO - Fitting ARIMA(1, 1, 1) model on series of length 1
+2026-03-01 18:43:05,505 - src.modeling.forecasting - INFO - ARIMA fit completed
+2026-03-01 18:43:05,505 - src.modeling.forecasting - INFO - Forecasting 3 periods ahead
+2026-03-01 18:43:43,287 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:43:43,325 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:43:43,325 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:43:43,642 - src.analysis.descriptive_stats - INFO - Computing basic KPIs
+2026-03-01 18:43:43,643 - src.analysis.descriptive_stats - INFO - Computing yearly aggregates
+2026-03-01 18:43:45,421 - src.modeling.simple_trend - INFO - Fitting linear trend for conso_energie
+2026-03-01 18:43:45,423 - src.modeling.simple_trend - INFO - Fitted model: y = 0.00 * year + 2012859657.52
+2026-03-01 18:43:45,428 - src.modeling.forecasting - INFO - Fitting ARIMA(1, 1, 1) model on series of length 1
+2026-03-01 18:43:45,446 - src.modeling.forecasting - INFO - ARIMA fit completed
+2026-03-01 18:43:45,446 - src.modeling.forecasting - INFO - Forecasting 3 periods ahead
+2026-03-01 18:43:45,455 - src.modeling.clustering - INFO - Clustering collectivités en 3 groupes
+2026-03-01 18:43:46,302 - src.modeling.anomaly - INFO - Détection d'anomalies (IsolationForest)
+2026-03-01 18:43:46,487 - src.modeling.anomaly - INFO - Détection d'anomalies z-score sur ratio
+2026-03-01 18:43:46,491 - src.monitoring.data_quality - INFO - Generating data quality report
+2026-03-01 18:45:21,189 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:45:21,245 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:45:21,245 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-01 18:45:25,477 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-01 18:45:25,536 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-01 18:45:25,536 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format

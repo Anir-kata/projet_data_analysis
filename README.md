@@ -17,7 +17,7 @@ Analyser et modéliser les consommations et dépenses énergétiques des collect
   - `ingestion/` : chargement des données brutes
   - `preprocessing/` : nettoyage, standardisation, contrôles qualité
   - `analysis/` : statistiques descriptives, agrégations, corrélations
-  - `modeling/` : modèles simples de tendance (régression linéaire)
+  - `modeling/` : modèles (régression, ARIMA, clustering, détection d'anomalies)
   - `monitoring/` : rapports de qualité de données
 - `notebooks/` : exploration et visualisation
 - `dashboard/` : (optionnel) interface de visualisation
@@ -28,3 +28,12 @@ Analyser et modéliser les consommations et dépenses énergétiques des collect
 python -m venv .venv
 source .venv/bin/activate  # ou équivalent Windows
 pip install -r requirements.txt
+
+## Nouvelles fonctionnalités
+
+1. **Modèles étendus** : ARIMA pour les prévisions, KMeans pour regrouper les collectivités, IsolationForest et z‑score pour détecter des anomalies.
+2. **Dashboard enrichi** : nouveaux onglets "Prévisions", "Clustering" et "Qualité des données" ainsi que des visualisations plus originales.
+3. **Thème cosy** : couleurs pastel/acidulées, arrière‑plans en dégradé et styles CSS modernes.
+4. **Tests étendus** : `test.py` couvre les nouvelles fonctions de modélisation.
+
+Pensez à relancer `pip install -r requirements.txt` après la mise à jour afin d'avoir `statsmodels`.

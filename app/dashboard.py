@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+# ensure project root is on path when script is executed directly
+PROJECT_ROOT = Path(__file__).parents[1].resolve()
+sys.path.append(str(PROJECT_ROOT))
+
 import dash
 from dash import dcc, html, Input, Output
 import plotly.express as px
@@ -5,6 +12,14 @@ import pandas as pd
 
 from src.ingestion.load_data import load_raw_energy_data
 from src.preprocessing.clean_data import reshape_energy_data
+
+# additional models and tools
+from src.modeling.forecasting import fit_arima, forecast_arima
+from src.modeling.clustering import cluster_collectivities
+from src.modeling.anomaly import detect_anomalies_isolation, detect_anomalies_zscore
+from src.monitoring.data_quality import data_quality_report
+
+import plotly.graph_objects as go
 
 # ============================
 #   LOAD & PREPARE DATA
@@ -17,7 +32,13 @@ df_by_energy = df_energy.groupby("type_energie")[["conso_energie", "depense_ener
 df_by_collectivite = df_energy.groupby("identifiant")[["conso_energie", "depense_energie"]].sum().reset_index()
 
 # Ratio €/kWh
-df_by_collectivite["ratio"] = df_by_collectivite["depense_energie"] / df_by_collectivite["conso_energie"]
+# évite les divisions par zéro
+if "conso_energie" in df_by_collectivite.columns:
+    df_by_collectivite["ratio"] = df_by_collectivite["depense_energie"] / df_by_collectivite["conso_energie"].replace(0, pd.NA)
+    df_by_collectivite["ratio"] = df_by_collectivite["ratio"].fillna(0)
+
+# Aggregés par année (utilisés pour prévisions)
+df_yearly = df_energy.groupby("annee")[["conso_energie", "depense_energie"]].sum().reset_index()
 
 # ============================
 #   DASH APP
@@ -132,6 +153,53 @@ app.layout = html.Div(id="app-container", children=[
             ),
             dcc.Graph(id="mix-radar")
         ]),
+        # ============================
+        #   TAB 6 : PRÉVISIONS
+        # ============================
+        dcc.Tab(label="Prévisions", children=[
+            html.Label("Indicateur :"),
+            dcc.Dropdown(
+                id="forecast-indicator",
+                options=[
+                    {"label": "Consommation", "value": "conso_energie"},
+                    {"label": "Dépense", "value": "depense_energie"},
+                ],
+                value="conso_energie",
+                clearable=False,
+            ),
+            html.Br(),
+            html.Label("Années à prévoir :"),
+            dcc.Slider(
+                id="forecast-years",
+                min=1,
+                max=10,
+                step=1,
+                value=3,
+                marks={i: str(i) for i in range(1, 11)},
+            ),
+            dcc.Graph(id="forecast-graph")
+        ]),
+        # ============================
+        #   TAB 7 : CLUSTERING
+        # ============================
+        dcc.Tab(label="Clustering", children=[
+            html.Label("Nombre de groupes :"),
+            dcc.Slider(
+                id="cluster-count",
+                min=2,
+                max=10,
+                step=1,
+                value=3,
+                marks={i: str(i) for i in range(2, 11)},
+            ),
+            dcc.Graph(id="cluster-graph")
+        ]),
+        # ============================
+        #   TAB 8 : QUALITÉ DES DONNÉES
+        # ============================
+        dcc.Tab(label="Qualité des données", children=[
+            dcc.Graph(id="dq-table")
+        ]),
     ])
 ])
 
@@ -181,18 +249,82 @@ def update_energy_detail(selected_energies):
     Input("anomaly-graph", "id")
 )
 def detect_anomalies(_):
+    # use isolation forest to highlight anomalies in ratio
     df_ratio = df_by_collectivite.copy()
+    df_ratio, _ = detect_anomalies_isolation(df_ratio, features=["ratio"])
+    return px.scatter(
+        df_ratio,
+        x="conso_energie",
+        y="ratio",
+        color="anomaly",
+        title="Anomalies détectées (€/kWh)",
+        color_discrete_map={False: "blue", True: "red"},
+    )
 
-    Q1 = df_ratio["ratio"].quantile(0.25)
-    Q3 = df_ratio["ratio"].quantile(0.75)
-    IQR = Q3 - Q1
-    threshold = Q3 + 1.5 * IQR
 
-    df_ratio["anomaly"] = df_ratio["ratio"] > threshold
+# PREVISIONS
+@app.callback(
+    Output("forecast-graph", "figure"),
+    Input("forecast-indicator", "value"),
+    Input("forecast-years", "value"),
+)
+def update_forecast(indicator, n_years):
+    # build a time series from yearly aggregation
+    df = df_yearly.set_index("annee")
+    series = df[indicator]
 
-    return px.scatter(df_ratio, x="conso_energie", y="ratio",
-                      color="anomaly",
-                      title="Anomalies (€/kWh)")
+    try:
+        model = fit_arima(series)
+        forecast_df = forecast_arima(model, steps=n_years)
+        # combine historical + forecast
+        hist = series.reset_index().rename(columns={indicator: "value"})
+        fut = forecast_df[["period", "mean"]].rename(columns={"period": "annee", "mean": "value"})
+        df_plot = pd.concat([hist, fut], ignore_index=True)
+    except Exception:
+        # fallback to simple linear trend
+        from src.modeling.simple_trend import fit_linear_trend, predict_future
+        model = fit_linear_trend(df.reset_index(), indicator)
+        start = df.index.max() + 1
+        future_years = list(range(start, start + n_years))
+        fut = predict_future(model, future_years).rename(columns={"prediction": "value"})
+        hist = df.reset_index().rename(columns={indicator: "value"})
+        df_plot = pd.concat([hist, fut], ignore_index=True)
+
+    return px.line(df_plot, x="annee", y="value", title=f"Prévision de {indicator}")
+
+
+# CLUSTERING
+@app.callback(
+    Output("cluster-graph", "figure"),
+    Input("cluster-count", "value"),
+)
+def update_clusters(n):
+    df_clustered, _ = cluster_collectivities(df_by_collectivite, n_clusters=n)
+    return px.scatter(
+        df_clustered,
+        x="conso_energie",
+        y="depense_energie",
+        color="cluster",
+        title=f"Clusters des collectivités ({n} groupes)",
+        hover_data=["identifiant"],
+    )
+
+
+# QUALITÉ DES DONNÉES
+@app.callback(
+    Output("dq-table", "figure"),
+    Input("dq-table", "id"),
+)
+def show_quality(_):
+    dq = data_quality_report(df_energy)
+    return go.Figure(
+        data=[
+            go.Table(
+                header=dict(values=list(dq.columns)),
+                cells=dict(values=[dq[col] for col in dq.columns]),
+            )
+        ]
+    )
 
 
 # MIX ÉNERGÉTIQUE (RADAR)

@@ -1,11 +1,17 @@
 .light-theme {
-    background-color: white;
-    color: black;
+    /* warm pastel gradient */
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333333;
 }
 
 .dark-theme {
-    background-color: #1e1e1e;
-    color: white;
+    /* moody dark gradient */
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f0f0f0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .kpi-container {
@@ -15,10 +21,33 @@
 }
 
 .kpi {
-    background-color: #f2f2f2;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     width: 20%;
     text-align: center;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border: 2px solid #ffd700;
+    backdrop-filter: blur(4px);
+}
+
+/* tabs and headers */
+.dash-tabs {
+    background-color: #ff6f61;
+    color: white;
+    font-weight: bold;
+}
+
+.dash-tabs .tab {
+    padding: 8px 16px;
+}
+
+.dash-tabs .tab--selected {
+    background-color: #ffb347;
+    color: #333;
+}
+
+/* generic cozy touches */
+#app-container {
+    padding: 20px 40px;
 }
