@@ -46,16 +46,8 @@ df_yearly = df_energy.groupby("annee")[["conso_energie", "depense_energie"]].sum
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div(id="app-container", children=[
+app.layout = html.Div([
     html.H1("Dashboard Énergie - EPC 2017", style={"textAlign": "center"}),
-
-    # MODE SOMBRE
-    dcc.Checklist(
-        id="theme-switch",
-        options=[{"label": "Mode sombre", "value": "dark"}],
-        value=[],
-        style={"margin": "20px"}
-    ),
 
     dcc.Tabs([
 
@@ -89,6 +81,15 @@ app.layout = html.Div(id="app-container", children=[
                 figure=px.bar(df_by_energy, x="type_energie", y="conso_energie",
                               title="Consommation par type d'énergie")
             ),
+
+            dcc.Graph(
+                figure=px.line(
+                    df_yearly,
+                    x="annee",
+                    y="conso_energie",
+                    title="Évolution annuelle de la consommation"
+                )
+         ),
 
             dcc.Graph(
                 figure=px.bar(df_by_energy, x="type_energie", y="depense_energie",
@@ -206,15 +207,6 @@ app.layout = html.Div(id="app-container", children=[
 # ============================
 #   CALLBACKS
 # ============================
-
-# MODE SOMBRE
-@app.callback(
-    Output("app-container", "className"),
-    Input("theme-switch", "value")
-)
-def toggle_theme(values):
-    return "dark-theme" if "dark" in values else "light-theme"
-
 
 # COLLECTIVITÉ DETAIL
 @app.callback(
