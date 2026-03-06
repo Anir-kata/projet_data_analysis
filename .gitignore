@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Jupyter Notebooks
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Data
+*.csv
+data/raw/
+
+# Environment
+.env
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.bak
+
+# Ignore build and dist
+build/
+dist/
+
+# Ignore requirements lock files
+pip-wheel-metadata/
+
+# Ignore assets
+app/assets/
+
+# Ignore test outputs
+test_outputs/

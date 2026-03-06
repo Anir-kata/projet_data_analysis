@@ -22,10 +22,14 @@ def fit_arima(series: pd.Series, order: tuple = (1, 1, 1)):
         Fitted ARIMA model instance.
     """
     logger.info(f"Fitting ARIMA{order} model on series of length {len(series)}")
-    model = sm.tsa.ARIMA(series, order=order)
-    fitted = model.fit()
-    logger.info("ARIMA fit completed")
-    return fitted
+    try:
+        model = sm.tsa.ARIMA(series, order=order)
+        fitted = model.fit()
+        logger.info("ARIMA fit completed")
+        return fitted
+    except Exception as e:
+        logger.error(f"Failed to fit ARIMA model: {e}")
+        raise
 
 
 def forecast_arima(fitted_model, steps: int) -> pd.DataFrame:
@@ -49,7 +53,12 @@ def forecast_arima(fitted_model, steps: int) -> pd.DataFrame:
             - mean_ci_upper
     """
     logger.info(f"Forecasting {steps} periods ahead")
-    pred = fitted_model.get_forecast(steps=steps)
-    df_forecast = pred.summary_frame().reset_index()
+    try:
+        pred = fitted_model.get_forecast(steps=steps)
+        df_forecast = pred.summary_frame().reset_index()
+        return df_forecast
+    except Exception as e:
+        logger.error(f"Failed to forecast ARIMA: {e}")
+        raise
     df_forecast = df_forecast.rename(columns={"index": "period"})
     return df_forecast

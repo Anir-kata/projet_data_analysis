@@ -11,16 +11,18 @@ def fit_linear_trend(df_yearly: pd.DataFrame, target_col: str) -> LinearRegressi
     Ajuste une régression linéaire simple sur (annee, target).
     """
     logger.info(f"Fitting linear trend for {target_col}")
-
-    X = df_yearly[["annee"]].values
-    y = df_yearly[target_col].values
-
-    model = LinearRegression()
-    model.fit(X, y)
-
-    logger.info(
-        f"Fitted model: y = {model.coef_[0]:.2f} * year + {model.intercept_:.2f}"
-    )
+    try:
+        X = df_yearly[["annee"]].values
+        y = df_yearly[target_col].values
+        model = LinearRegression()
+        model.fit(X, y)
+        logger.info(
+            f"Fitted model: y = {model.coef_[0]:.2f} * year + {model.intercept_:.2f}"
+        )
+        return model
+    except Exception as e:
+        logger.error(f"Failed to fit linear trend for {target_col}: {e}")
+        raise
     return model
 
 def predict_future(model: LinearRegression, years: list[int]) -> pd.DataFrame:

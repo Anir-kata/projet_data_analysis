@@ -118,3 +118,9 @@
 2026-03-01 18:49:53,190 - src.monitoring.data_quality - INFO - Generating data quality report
 2026-03-01 18:49:53,198 - src.modeling.forecasting - INFO - ARIMA fit completed
 2026-03-01 18:49:53,208 - src.modeling.forecasting - INFO - Forecasting 3 periods ahead
+2026-03-02 21:51:54,454 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-02 21:51:54,492 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-02 21:51:54,492 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format
+2026-03-02 21:51:58,196 - src.ingestion.load_data - INFO - Loading raw data from C:\Users\EKAN\Desktop\projet_data_analysis\data\raw\EPC_2_Energie.csv
+2026-03-02 21:51:58,230 - src.ingestion.load_data - INFO - Loaded 3860 rows
+2026-03-02 21:51:58,230 - src.preprocessing.clean_data - INFO - Reshaping energy data into long format

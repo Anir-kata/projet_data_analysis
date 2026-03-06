@@ -14,6 +14,10 @@ def load_raw_energy_data(filepath: Path | None = None) -> pd.DataFrame:
         filepath = DEFAULT_RAW_FILE
 
     logger.info(f"Loading raw data from {filepath}")
-    df = pd.read_csv(filepath, sep=",", encoding="utf-8")
-    logger.info(f"Loaded {len(df)} rows")
+    try:
+        df = pd.read_csv(filepath, sep=",", encoding="utf-8")
+        logger.info(f"Loaded {len(df)} rows")
+    except Exception as e:
+        logger.error(f"Failed to load data from {filepath}: {e}")
+        raise
     return df
